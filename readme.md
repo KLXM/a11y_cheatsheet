@@ -67,7 +67,6 @@
     - [Allgemeine Tipps zur Nutzung von Open-Source-Barrierefreiheitstools](#143-allgemeine-tipps-zur-nutzung-von-open-source-barrierefreiheitstools)
 
 
-Diese Version sollte in GitHub korrekt eingerückt und untereinander dargestellt werden. Die Hauptpunkte sind nummeriert, und die Unterpunkte sind mit Bindestrichen aufgelistet, was eine bessere visuelle Hierarchie in GitHub's Markdown-Darstellung ergibt.
 
 ## 1. Struktur und Semantik
 
