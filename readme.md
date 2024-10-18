@@ -140,7 +140,7 @@ Tipp: Bei semantischen HTML5-Elementen ist die explizite Angabe der Landmark-Rol
 
 ## 1.4 Von Screenreadern ignorierte oder speziell behandelte Tags
 
-Screenreader behandeln verschiedene HTML-Tags unterschiedlich. Hier ist eine erweiterte Liste:
+Screenreader behandeln verschiedene HTML-Tags unterschiedlich. 
 
 ### Üblicherweise ignorierte Tags:
 - `<style>`
