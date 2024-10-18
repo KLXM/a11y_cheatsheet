@@ -1,5 +1,30 @@
 # Cheatsheet: Barrierefreies Webdesign
 
+Hier ist eine tabellarische Übersicht als Cheatsheet für barrierefreies Webdesign:
+
+| **Kategorie**                      | **Best Practice**                                                                                         | **Beispiel/Code**                                                                 |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **HTML Struktur**                  | Verwende semantische HTML5-Elemente wie `<header>`, `<main>`, `<footer>`, `<nav>`, etc.                      | `<main>` für Hauptinhalt, `<nav>` für Navigation                                |
+| **Überschriftenhierarchie**        | Verwende `<h1>` bis `<h6>` in logischer Reihenfolge                                                        | `<h1>Seitenüberschrift</h1> <h2>Untertitel</h2>`                                |
+| **ARIA-Landmarks**                 | Nutze Landmark-Rollen wie `role="main"` für wichtigen Inhalt                                                | `<main role="main"></main>`                                                     |
+| **Bilder**                         | Füge beschreibende Alt-Texte hinzu                                                                         | `<img src="bild.jpg" alt="Beschreibung">`                                        |
+| **Links**                          | Beschreibende Linktexte, keine generischen wie "Hier klicken"                                               | `<a href="seite.html">Produktseite besuchen</a>`                                |
+| **Formulare**                      | Immer `<label>` mit Formularfeldern verwenden, Pflichtfelder kennzeichnen                                  | `<label for="email">E-Mail</label> <input type="email" id="email" required>`    |
+| **Tastaturfokus**                  | Sichtbarer Fokus-Indikator für fokussierbare Elemente                                                       | `:focus { outline: 2px solid #000; }`                                           |
+| **Skiplinks**                      | Skiplinks einbauen, um direkt zum Hauptinhalt zu springen                                                   | `<a href="#main-content" class="skip-link">Zum Inhalt springen</a>`             |
+| **Farben und Kontrast**            | Mindestens 4.5:1 Kontrast für Text, 3:1 für große Texte                                                     | WebAIM Contrast Checker nutzen                                                  |
+| **Responsive Design**              | Verwende flexible Layouts, die sich an verschiedene Bildschirmgrößen anpassen                               | `display: flex;`, `@media`-Queries für verschiedene Breakpoints                 |
+| **Schriftgrößen**                  | Verwende relative Einheiten wie `rem` für Schriftgrößen                                                     | `body { font-size: 16px; } h1 { font-size: 2rem; }`                             |
+| **Zeilenabstand**                  | Zeilenhöhe mindestens 1.5 für bessere Lesbarkeit                                                            | `line-height: 1.5;`                                                             |
+| **Video-Untertitel**               | Füge Untertitel zu Videos hinzu mit `<track>`                                                               | `<track kind="captions" src="subtitles.vtt" srclang="de">`                      |
+| **Fehlerbehandlung in Formularen** | Klar sichtbare und ansagebare Fehlermeldungen                                                               | `<input aria-invalid="true" aria-describedby="error-id"> <div id="error-id">Fehler</div>` |
+| **Automatisierte Tests**           | Tools wie axe, Lighthouse oder WAVE verwenden, um Barrierefreiheitsprüfungen durchzuführen                  | `axe.run().then(results => console.log(results))`                               |
+| **Screenreader-Funktion**          | Nutze `aria-live` für dynamische Inhalte, um Screenreader-Nutzer zu informieren                             | `<div aria-live="polite">Inhalt wurde aktualisiert</div>`                       |
+| **Tabellenstruktur**               | Korrekte Nutzung von `<th>` mit `scope` für Überschriften und `<caption>` für eine Beschreibung              | `<table> <caption>Übersicht</caption> <th scope="col">Spalte</th></table>`      |
+| **JavaScript und Barrierefreiheit**| Fokusmanagement sicherstellen bei dynamischen Inhalten, z.B. Modals                                         | `document.getElementById('close-button').focus();`                              |
+
+Dieses Cheatsheet deckt die wichtigsten Aspekte von barrierefreiem Webdesign in kompakter tabellarischer Form ab.
+
 ## Inhaltsverzeichnis: Barrierefreies Webdesign Cheatsheet
 
 1. [Struktur und Semantik](#1-struktur-und-semantik)
