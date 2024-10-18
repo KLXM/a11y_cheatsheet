@@ -302,4 +302,124 @@ Tipp: Verwenden Sie Tools wie den WebAIM Contrast Checker, um Ihre Farbkombinati
 
 Tipp: Testen Sie Ihr Design auf verschiedenen Geräten und Bildschirmgrößen.
 
-### 6
+## 6. Visuelles Design (Fortsetzung)
+
+### 6.3 Schriftgrößen
+- Verwenden Sie relative Einheiten für Schriftgrößen
+
+| Einheit | Beschreibung | Tipp |
+|---------|--------------|------|
+| `rem` | Relativ zur Wurzel-Schriftgröße | Ideal für konsistente Skalierung |
+| `em` | Relativ zur Eltern-Schriftgröße | Nützlich für komponenten-basiertes Styling |
+| `%` | Prozentual zur Eltern-Schriftgröße | Ähnlich wie `em`, aber oft intuitiver |
+| `vw` | Relativ zur Viewportbreite | Vorsichtig verwenden, kann zu extremen Größen führen |
+
+```css
+body {
+  font-size: 16px; /* Basis-Schriftgröße */
+}
+h1 {
+  font-size: 2rem; /* Relativ zur Basis-Schriftgröße */
+}
+```
+
+Tipp: Eine Basis-Schriftgröße von 16px ist ein guter Ausgangspunkt. Stellen Sie sicher, dass Text auch bei 200% Zoom noch lesbar ist.
+
+### 6.4 Zeilenabstand und Textausrichtung
+
+| Eigenschaft | Empfehlung | Tipp |
+|-------------|------------|------|
+| `line-height` | Mindestens 1.5 | Verbessert die Lesbarkeit, besonders bei längeren Texten |
+| `text-align` | Linksbündig für längere Texte | Zentrierter Text kann für Nutzer mit Leseschwäche schwierig sein |
+| `max-width` | Ca. 60-80 Zeichen pro Zeile | Verbessert die Lesbarkeit und verhindert zu lange Zeilen |
+
+```css
+body {
+  line-height: 1.5;
+  text-align: left;
+}
+p {
+  max-width: 60ch; /* ch-Einheit entspricht der Breite der "0" im aktuellen Font */
+}
+```
+
+Tipp: Vermeiden Sie vollständig gerechtfertigten Text (`text-align: justify`), da ungleichmäßige Wortabstände die Lesbarkeit beeinträchtigen können.
+
+## 7. Multimedia
+
+### 7.1 Video-Untertitel
+- Fügen Sie Untertitel zu Videos hinzu
+
+| Attribut/Element | Verwendung | Tipp |
+|------------------|------------|------|
+| `<track>` | Definiert Text-Tracks für `<video>` | Kann für Untertitel, Beschreibungen etc. verwendet werden |
+| `kind` | Art des Text-Tracks | `"captions"` für Untertitel, `"descriptions"` für Audiobeschreibungen |
+| `srclang` | Sprache des Tracks | Verwenden Sie standardisierte Sprachcodes (z.B. "de" für Deutsch) |
+| `label` | Beschriftung für die Auswahl des Tracks | Sollte die Sprache oder Art des Tracks klar benennen |
+
+```html
+<video controls>
+  <source src="video.mp4" type="video/mp4">
+  <track kind="captions" src="captions.vtt" srclang="de" label="Deutsch">
+</video>
+```
+
+Tipp: Bieten Sie, wenn möglich, Untertitel in mehreren Sprachen an. Stellen Sie sicher, dass die Untertitel synchron zum Gesprochenen sind.
+
+### 7.2 Audiobeschreibungen
+- Bieten Sie Transkripte für Audioinhalte an
+
+| Element/Attribut | Verwendung | Tipp |
+|------------------|------------|------|
+| `<audio>` | Einbettung von Audiodateien | Immer mit Bedienelementen (`controls`) versehen |
+| `<source>` | Quelldatei für Audio | Bieten Sie mehrere Formate für bessere Kompatibilität |
+| `type` | MIME-Typ der Audiodatei | Hilft Browsern, das richtige Format zu wählen |
+
+```html
+<audio controls>
+  <source src="podcast.mp3" type="audio/mpeg">
+  <source src="podcast.ogg" type="audio/ogg">
+  Ihr Browser unterstützt das Audio-Element nicht.
+</audio>
+<a href="transcript.html">Transkript lesen</a>
+```
+
+Tipp: Stellen Sie Transkripte in einem zugänglichen Textformat bereit, idealerweise auf derselben Seite wie der Audioinhalt.
+
+## 8. Testing
+
+### 8.1 Automatisierte Tests
+- Nutzen Sie Tools wie axe oder WAVE für erste Überprüfungen
+
+| Tool | Verwendung | Tipp |
+|------|------------|------|
+| axe DevTools | Browser-Erweiterung für Entwickler | Integriert sich gut in den Entwicklungsprozess |
+| WAVE | Online-Tool und Browser-Erweiterung | Bietet visuelle Feedback direkt auf der Webseite |
+| Lighthouse | Integriert in Chrome DevTools | Prüft Barrierefreiheit zusammen mit Performance und SEO |
+
+Tipp: Automatisierte Tests sind ein guter Ausgangspunkt, ersetzen aber keine manuellen Tests und Nutzertests.
+
+### 8.2 Manuelle Tests
+- Führen Sie Tastatur-Navigation-Tests durch
+- Testen Sie mit Screenreadern (z.B. NVDA, JAWS)
+
+| Testmethode | Was zu prüfen ist | Tipp |
+|-------------|-------------------|------|
+| Tastatur-Navigation | Fokusreihenfolge, Erreichbarkeit aller Funktionen | Testen Sie ohne Maus, nur mit Tastatur |
+| Screenreader-Test | Verständlichkeit der Inhalte, korrekte Ankündigungen | Lernen Sie die Grundlagen eines Screenreaders |
+| Zoom-Test | Lesbarkeit und Layout bei 200% Zoom | Prüfen Sie auf horizontales Scrollen und überlappendes Layout |
+| Farbkontrast-Check | Lesbarkeit von Text und Erkennbarkeit von UI-Elementen | Nutzen Sie Tools wie den WebAIM Contrast Checker |
+
+Tipp: Erstellen Sie eine Checkliste für manuelle Tests und führen Sie diese regelmäßig durch, besonders nach größeren Änderungen.
+
+### 8.3 Nutzertests
+- Beziehen Sie Menschen mit Behinderungen in Ihre Testprozesse ein
+
+| Testgruppe | Fokus | Tipp |
+|------------|-------|------|
+| Screenreader-Nutzer | Navigation, Verständlichkeit von Inhalten | Testen Sie mit verschiedenen Screenreader-Kombinationen |
+| Tastatur-Nutzer | Bedienbarkeit ohne Maus | Achten Sie auf Fallstricke wie versteckte Inhalte |
+| Nutzer mit eingeschränktem Sehvermögen | Lesbarkeit, Kontraste, Zoom-Funktionalität | Testen Sie verschiedene Kontrasteinstellungen und Zoomstufen |
+| Nutzer mit kognitiven Einschränkungen | Klarheit der Sprache, Struktur der Inhalte | Achten Sie auf klare, einfache Anleitungen und konsistentes Design |
+
+Tipp: Planen Sie Nutzertests frühzeitig ein und führen Sie sie regelmäßig durch. Das Feedback von echten Nutzern ist unersetzlich für die Verbesserung der Barrierefreiheit.
