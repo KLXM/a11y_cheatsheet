@@ -423,8 +423,6 @@ Tipp: Verwenden Sie Tools wie den WebAIM Contrast Checker, um Ihre Farbkombinati
 
 Tipp: Testen Sie Ihr Design auf verschiedenen Geräten und Bildschirmgrößen.
 
-## 6. Visuelles Design (Fortsetzung)
-
 ### 6.3 Schriftgrößen
 - Verwenden Sie relative Einheiten für Schriftgrößen
 
