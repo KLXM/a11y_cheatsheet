@@ -2,11 +2,11 @@
 
 ## Inhaltsverzeichnis: Barrierefreies Webdesign Cheatsheet
 
-
 1. [Struktur und Semantik](#1-struktur-und-semantik)
     - [Grundlegende HTML-Struktur](#11-grundlegende-html-struktur)
     - [Überschriftenhierarchie](#12-überschriftenhierarchie)
     - [Landmarks](#13-landmarks)
+    - [Von Screenreadern ignorierte oder speziell behandelte Tags](#14-von-screenreadern-ignorierte-oder-speziell-behandelte-tags)
 
 2. [Inhalte](#2-inhalte)
     - [Bilder](#21-bilder)
@@ -66,7 +66,9 @@
     - [Detaillierte Beschreibungen und Tipps](#142-detaillierte-beschreibungen-und-tipps)
     - [Allgemeine Tipps zur Nutzung von Open-Source-Barrierefreiheitstools](#143-allgemeine-tipps-zur-nutzung-von-open-source-barrierefreiheitstools)
 
-
+15. [JavaScript und Screenreader](#15-javascript-und-screenreader)
+    - [Unterstützung von JavaScript durch Screenreader](#151-unterstützung-von-javascript-durch-screenreader)
+    - [Best Practices für barrierefreies JavaScript](#152-best-practices-für-barrierefreies-javascript)
 
 ## 1. Struktur und Semantik
 
