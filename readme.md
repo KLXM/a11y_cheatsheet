@@ -423,3 +423,117 @@ Tipp: Erstellen Sie eine Checkliste für manuelle Tests und führen Sie diese re
 | Nutzer mit kognitiven Einschränkungen | Klarheit der Sprache, Struktur der Inhalte | Achten Sie auf klare, einfache Anleitungen und konsistentes Design |
 
 Tipp: Planen Sie Nutzertests frühzeitig ein und führen Sie sie regelmäßig durch. Das Feedback von echten Nutzern ist unersetzlich für die Verbesserung der Barrierefreiheit.
+
+## 9. Fortgeschrittene ARIA-Techniken
+
+### 9.1 Komplexe Interaktive Komponenten
+
+| ARIA-Attribut | Verwendung | Tipp |
+|---------------|------------|------|
+| `aria-hidden="true"` | Elemente von Screenreadern verstecken | Vorsichtig verwenden, nicht für fokussierbare Elemente |
+| `aria-label` | Kurze Beschriftung für Elemente | Nützlich für Elemente ohne sichtbaren Text |
+| `aria-labelledby` | Verknüpft Element mit seiner Beschriftung | Verwendet IDs anderer Elemente als Beschriftung |
+| `aria-describedby` | Verknüpft Element mit ausführlicher Beschreibung | Gut für zusätzliche Kontextinformationen |
+
+```html
+<button aria-label="Menü schließen" class="close-button">×</button>
+
+<h2 id="section-title">Produktübersicht</h2>
+<div aria-labelledby="section-title">
+  <!-- Inhalt der Produktübersicht -->
+</div>
+```
+
+Tipp: Verwenden Sie ARIA sparsam und nur dann, wenn native HTML-Elemente nicht ausreichen. Zu viel ARIA kann die Zugänglichkeit verschlechtern.
+
+### 9.2 Dynamische Inhalte und Single-Page Applications (SPAs)
+
+| Technik | Verwendung | Tipp |
+|---------|------------|------|
+| `aria-live` Regionen | Für dynamisch aktualisierte Inhalte | Verwenden Sie `polite` für die meisten Updates |
+| Fokusmanagement in SPAs | Setzen des Fokus bei Seitenwechseln | Fokussieren Sie das Hauptelement nach Navigation |
+| Verlauf-Management | Ermöglicht Vor- und Zurücknavigation | Nutzen Sie die History API für bessere Zugänglichkeit |
+
+```javascript
+// Beispiel für Fokusmanagement in einer SPA
+function navigateToPage(pageId) {
+  // Aktualisiere den Inhalt
+  updatePageContent(pageId);
+  
+  // Setze den Fokus auf den Hauptinhalt
+  document.getElementById('main-content').focus();
+}
+```
+
+Tipp: Testen Sie SPAs gründlich mit Screenreadern, um sicherzustellen, dass Seitenwechsel und dynamische Updates korrekt angekündigt werden.
+
+## 10. Internationalisierung und Lokalisierung
+
+### 10.1 Sprachunterstützung
+
+| Attribut/Technik | Verwendung | Tipp |
+|------------------|------------|------|
+| `lang` Attribut | Definiert die Sprache des Dokuments oder Abschnitts | Immer auf dem `<html>`-Element setzen, für Abschnitte in anderen Sprachen wiederholen |
+| Zeichenkodierung | UTF-8 für universelle Zeichenunterstützung | Immer in der Kopfzeile des HTML-Dokuments angeben |
+| Bidirektionaler Text | Unterstützung für LTR und RTL Sprachen | Verwenden Sie `dir` Attribut und CSS `direction` Eigenschaft |
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <!-- ... -->
+</head>
+<body>
+    <p>Deutscher Text</p>
+    <p lang="en">English text</p>
+    <p lang="ar" dir="rtl">نص عربي</p>
+</body>
+</html>
+```
+
+Tipp: Berücksichtigen Sie bei der Gestaltung des Layouts, dass sich Textlängen in verschiedenen Sprachen stark unterscheiden können.
+
+## 11. Performance und Barrierefreiheit
+
+### 11.1 Ladezeiten und Nutzererfahrung
+
+| Technik | Verwendung | Tipp |
+|---------|------------|------|
+| Lazy Loading | Verzögertes Laden von Inhalten | Implementieren Sie für Bilder und Videos, aber beachten Sie die Auswirkungen auf Screenreader |
+| Progressive Enhancement | Grundfunktionalität ohne JavaScript | Stellen Sie sicher, dass kritische Funktionen auch ohne JS funktionieren |
+| Komprimierung | Reduzieren der Dateigröße | Komprimieren Sie Bilder und CSS/JS-Dateien für schnellere Ladezeiten |
+
+```html
+<img src="placeholder.jpg" data-src="large-image.jpg" alt="Beschreibung" loading="lazy">
+```
+
+Tipp: Schnelle Ladezeiten sind besonders wichtig für Nutzer mit langsamen Internetverbindungen oder älteren Geräten. Optimieren Sie die Performance, ohne die Zugänglichkeit zu beeinträchtigen.
+
+## 12. Rechtliche Aspekte und Richtlinien
+
+### 12.1 Compliance und Standards
+
+| Standard/Richtlinie | Beschreibung | Tipp |
+|---------------------|--------------|------|
+| WCAG 2.1 | Web Content Accessibility Guidelines | Streben Sie mindestens Level AA an |
+| EN 301 549 | EU-Standard für Barrierefreiheit | Relevant für öffentliche Einrichtungen und Behörden |
+| Section 508 | US-Bundesgesetz zur Barrierefreiheit | Wichtig für US-Regierungswebsites und -anwendungen |
+
+Tipp: Halten Sie sich über Aktualisierungen der Richtlinien auf dem Laufenden. WCAG 2.2 ist in Vorbereitung und wird neue Erfolgskriterien einführen.
+
+### 12.2 Dokumentation und Erklärungen
+
+| Dokument | Zweck | Tipp |
+|----------|-------|------|
+| Barrierefreiheitserklärung | Informiert über den Stand der Barrierefreiheit | Aktualisieren Sie regelmäßig und seien Sie transparent über bekannte Probleme |
+| Feedback-Mechanismus | Ermöglicht Nutzern, Probleme zu melden | Stellen Sie einen einfachen Weg bereit, Barrierefreiheitsprobleme zu melden |
+
+```html
+<footer>
+  <a href="/barrierefreiheitserklaerung">Barrierefreiheitserklärung</a>
+  <a href="/feedback">Feedback zur Barrierefreiheit geben</a>
+</footer>
+```
+
+Tipp: Eine offene und transparente Kommunikation über den Stand der Barrierefreiheit kann das Vertrauen der Nutzer stärken und hilft bei der kontinuierlichen Verbesserung.
