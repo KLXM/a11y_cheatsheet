@@ -22,7 +22,6 @@
 | **Tabellenstruktur**               | Korrekte Nutzung von `<th>` mit `scope` für Überschriften und `<caption>` für eine Beschreibung              | `<table> <caption>Übersicht</caption> <th scope="col">Spalte</th></table>`      |
 | **JavaScript und Barrierefreiheit**| Fokusmanagement sicherstellen bei dynamischen Inhalten, z.B. Modals                                         | `document.getElementById('close-button').focus();`                              |
 
-Dieses Cheatsheet deckt die wichtigsten Aspekte von barrierefreiem Webdesign in kompakter tabellarischer Form ab.
 
 ## Inhaltsverzeichnis: Barrierefreies Webdesign Cheatsheet
 
