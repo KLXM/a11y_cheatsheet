@@ -1,6 +1,5 @@
 # Cheatsheet: Barrierefreies Webdesign
 
-Hier ist eine tabellarische Übersicht als Cheatsheet für barrierefreies Webdesign:
 
 | **Kategorie**                      | **Best Practice**                                                                                         | **Beispiel/Code**                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
