@@ -136,6 +136,34 @@
 
 Tipp: Bei semantischen HTML5-Elementen ist die explizite Angabe der Landmark-Rolle oft redundant. Verwenden Sie sie nur, wenn nötig oder zur Verdeutlichung.
 
+## 1.4 Von Screenreadern ignorierte oder speziell behandelte Tags
+
+Screenreader behandeln verschiedene HTML-Tags unterschiedlich. Hier ist eine erweiterte Liste:
+
+### Üblicherweise ignorierte Tags:
+- `<style>`
+- `<script>`
+- `<noscript>`
+- `<canvas>` (ohne entsprechende Beschreibung)
+- `<svg>` (ohne entsprechende Beschreibung oder Titel)
+
+### Speziell behandelte Tags:
+- `<iframe>` (der Inhalt wird ignoriert, aber der Titel wird gelesen)
+- `<br>` (wird als kurze Pause interpretiert)
+- `<hr>` (kann je nach Screenreader als "horizontale Linie" oder Trennung angekündigt werden)
+- `<i>`, `<b>`, `<u>` (werden normalerweise ignoriert, es sei denn, sie sind mit ARIA-Rollen versehen)
+
+### Tags, die je nach Kontext und Inhalt behandelt werden:
+- `<div>` und `<span>` (normalerweise ignoriert, es sei denn, sie enthalten Text oder haben ARIA-Attribute)
+- `<table>` (wird gelesen, aber die Darstellung hängt von der Komplexität und Struktur ab)
+
+### Wichtige Hinweise:
+1. `<img>` ohne Alt-Text wird unterschiedlich behandelt (manche Screenreader lesen den Dateinamen, andere ignorieren das Bild komplett)
+2. Dekorative Elemente wie `::before` und `::after` in CSS werden normalerweise ignoriert
+3. Versteckte Elemente (`display: none` oder `visibility: hidden`) werden in der Regel übersprungen
+
+Tipp: Verwenden Sie semantisches HTML und ARIA-Attribute, um sicherzustellen, dass Ihre Inhalte korrekt interpretiert werden. Testen Sie mit verschiedenen Screenreadern, da es Unterschiede in der Behandlung geben kann.
+
 ## 2. Inhalte
 
 ### 2.1 Bilder
@@ -841,3 +869,139 @@ tota11y ist ein leichtgewichtiges JavaScript-Plugin, das visuelle Annotationen f
 5. **Schulung**: Nutzen Sie diese Tools, um Ihr Team in Barrierefreiheitspraktiken zu schulen.
 6. **Dokumentation**: Halten Sie die Ergebnisse Ihrer Tests fest und dokumentieren Sie Verbesserungen.
 7. **Community-Engagement**: Beteiligen Sie sich an den Open-Source-Communities dieser Tools, um von Erfahrungen anderer zu profitieren und beizutragen.
+
+Natürlich, ich werde den Abschnitt 15 über JavaScript und Screenreader noch einmal komplett und detaillierter ausarbeiten:
+
+
+## 15. JavaScript und Screenreader
+
+### 15.1 Unterstützung von JavaScript durch Screenreader
+
+Die Unterstützung von JavaScript durch Screenreader hat sich in den letzten Jahren erheblich verbessert, aber es gibt immer noch einige wichtige Punkte zu beachten:
+
+- Die meisten modernen Screenreader unterstützen JavaScript.
+- Die Unterstützung kann je nach Screenreader, Browser und Betriebssystem variieren.
+- Einige Nutzer deaktivieren JavaScript aus Sicherheits- oder Performance-Gründen.
+- Dynamisch generierte Inhalte können übersehen werden, wenn sie nicht korrekt implementiert sind.
+
+| Screenreader | JavaScript-Unterstützung |
+|--------------|--------------------------|
+| JAWS         | Gut                      |
+| NVDA         | Sehr gut                 |
+| VoiceOver    | Gut                      |
+| Narrator     | Verbessert sich stetig   |
+
+### 15.2 Best Practices für barrierefreies JavaScript
+
+1. **Progressive Enhancement**
+   - Stellen Sie sicher, dass die Kernfunktionalität ohne JavaScript verfügbar ist.
+   - Verwenden Sie JavaScript, um die Benutzererfahrung zu verbessern, nicht um sie zu ermöglichen.
+
+   ```html
+   <button onclick="submitForm()" type="submit">Senden</button>
+   ```
+
+2. **ARIA Live Regions**
+   - Verwenden Sie `aria-live` für dynamisch aktualisierte Inhalte.
+   - Wählen Sie den passenden Wert: `polite`, `assertive` oder `off`.
+
+   ```html
+   <div aria-live="polite" id="status-message"></div>
+   ```
+
+   ```javascript
+   document.getElementById('status-message').textContent = 'Formular erfolgreich gesendet';
+   ```
+
+3. **Fokusmanagement**
+   - Setzen Sie den Fokus nach dynamischen Änderungen korrekt.
+   - Vermeiden Sie unerwartete Fokuswechsel.
+
+   ```javascript
+   function openModal() {
+     const modal = document.getElementById('modal');
+     modal.style.display = 'block';
+     document.getElementById('modal-close-btn').focus();
+   }
+   ```
+
+4. **Tastaturunterstützung**
+   - Stellen Sie sicher, dass alle JavaScript-gesteuerten Interaktionen auch mit der Tastatur möglich sind.
+   - Implementieren Sie benutzerdefinierte Tastatursteuerungen für komplexe Widgets.
+
+   ```javascript
+   element.addEventListener('keydown', function(event) {
+     if (event.key === 'Enter' || event.key === ' ') {
+       // Aktion ausführen
+     }
+   });
+   ```
+
+5. **Vermeiden Sie automatische Aktualisierungen**
+   - Geben Sie Nutzern die Kontrolle über Inhaltsaktualisierungen.
+   - Wenn automatische Updates notwendig sind, informieren Sie die Nutzer darüber.
+
+   ```html
+   <div aria-live="polite">
+     Neue Nachrichten werden alle 5 Minuten geladen. 
+     <button onclick="toggleAutoUpdate()">Automatische Updates deaktivieren</button>
+   </div>
+   ```
+
+6. **Fehlerbehandlung und Feedback**
+   - Kommunizieren Sie Fehler und Statusänderungen klar und zugänglich.
+   - Verwenden Sie ARIA-Attribute wie `aria-invalid` und `aria-describedby`.
+
+   ```html
+   <input type="text" id="username" aria-describedby="username-error">
+   <div id="username-error" aria-live="polite"></div>
+   ```
+
+   ```javascript
+   function validateUsername() {
+     const input = document.getElementById('username');
+     const error = document.getElementById('username-error');
+     if (input.value.length < 3) {
+       input.setAttribute('aria-invalid', 'true');
+       error.textContent = 'Benutzername muss mindestens 3 Zeichen lang sein.';
+     } else {
+       input.removeAttribute('aria-invalid');
+       error.textContent = '';
+     }
+   }
+   ```
+
+7. **Dynamische Inhalte**
+   - Verwenden Sie `aria-busy="true"`, während Inhalte geladen werden.
+   - Aktualisieren Sie den Seitentitel (`<title>`), wenn sich der Hauptinhalt ändert.
+
+   ```html
+   <div id="content" aria-busy="false">
+     <!-- Inhalt hier -->
+   </div>
+   ```
+
+   ```javascript
+   async function loadContent() {
+     const content = document.getElementById('content');
+     content.setAttribute('aria-busy', 'true');
+     // Inhalt laden
+     content.setAttribute('aria-busy', 'false');
+     document.title = 'Neue Seite - Meine Website';
+   }
+   ```
+
+8. **Testing**
+   - Testen Sie mit verschiedenen Screenreadern (JAWS, NVDA, VoiceOver, etc.).
+   - Führen Sie Tests mit deaktiviertem JavaScript durch.
+   - Nutzen Sie automatisierte Testing-Tools wie axe-core.
+
+   ```javascript
+   import { axe } from 'axe-core';
+
+   axe.run().then(results => {
+     console.log(results.violations);
+   });
+   ```
+
+Tipp: Orientieren Sie sich an den WAI-ARIA Authoring Practices für die Implementierung komplexer Widgets und Interaktionen. Diese bieten detaillierte Anleitungen für die Erstellung barrierefreier interaktiver Elemente.
