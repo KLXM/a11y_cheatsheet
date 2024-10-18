@@ -1,5 +1,70 @@
 # Cheatsheet: Barrierefreies Webdesign
 
+## Inhaltsverzeichnis: Barrierefreies Webdesign Cheatsheet
+
+1. [Struktur und Semantik](#1-struktur-und-semantik)
+   1.1 [Grundlegende HTML-Struktur](#11-grundlegende-html-struktur)
+   1.2 [Überschriftenhierarchie](#12-überschriftenhierarchie)
+   1.3 [Landmarks](#13-landmarks)
+
+2. [Inhalte](#2-inhalte)
+   2.1 [Bilder](#21-bilder)
+   2.2 [Links](#22-links)
+   2.3 [Tabellen](#23-tabellen)
+
+3. [Formulare](#3-formulare)
+   3.1 [Grundstruktur](#31-grundstruktur)
+   3.2 [Fehlerbehandlung](#32-fehlerbehandlung)
+
+4. [Tastaturzugänglichkeit](#4-tastaturzugänglichkeit)
+   4.1 [Fokus-Management](#41-fokus-management)
+   4.2 [Skiplinks](#42-skiplinks)
+
+5. [ARIA (Accessible Rich Internet Applications)](#5-aria-accessible-rich-internet-applications)
+   5.1 [Dynamischer Inhalt](#51-dynamischer-inhalt)
+   5.2 [Erweiterte Widgets](#52-erweiterte-widgets)
+
+6. [Visuelles Design](#6-visuelles-design)
+   6.1 [Farben und Kontrast](#61-farben-und-kontrast)
+   6.2 [Responsive Design](#62-responsive-design)
+   6.3 [Schriftgrößen](#63-schriftgrößen)
+   6.4 [Zeilenabstand und Textausrichtung](#64-zeilenabstand-und-textausrichtung)
+
+7. [Multimedia](#7-multimedia)
+   7.1 [Video-Untertitel](#71-video-untertitel)
+   7.2 [Audiobeschreibungen](#72-audiobeschreibungen)
+
+8. [Testing](#8-testing)
+   8.1 [Automatisierte Tests](#81-automatisierte-tests)
+   8.2 [Manuelle Tests](#82-manuelle-tests)
+   8.3 [Nutzertests](#83-nutzertests)
+
+9. [Fortgeschrittene ARIA-Techniken](#9-fortgeschrittene-aria-techniken)
+   9.1 [Komplexe Interaktive Komponenten](#91-komplexe-interaktive-komponenten)
+   9.2 [Dynamische Inhalte und Single-Page Applications (SPAs)](#92-dynamische-inhalte-und-single-page-applications-spas)
+
+10. [Internationalisierung und Lokalisierung](#10-internationalisierung-und-lokalisierung)
+    10.1 [Sprachunterstützung](#101-sprachunterstützung)
+
+11. [Performance und Barrierefreiheit](#11-performance-und-barrierefreiheit)
+    11.1 [Ladezeiten und Nutzererfahrung](#111-ladezeiten-und-nutzererfahrung)
+
+12. [Rechtliche Aspekte und Richtlinien](#12-rechtliche-aspekte-und-richtlinien)
+    12.1 [Compliance und Standards](#121-compliance-und-standards)
+    12.2 [Dokumentation und Erklärungen](#122-dokumentation-und-erklärungen)
+
+13. [Barrierefreiheit mit CSS-Frameworks und Komponentenbibliotheken](#13-barrierefreiheit-mit-css-frameworks-und-komponentenbibliotheken)
+    13.1 [Tailwind CSS](#131-tailwind-css)
+    13.2 [Shoelace](#132-shoelace)
+    13.3 [Bootstrap](#133-bootstrap)
+    13.4 [UIkit 3](#134-uikit-3)
+    13.5 [Allgemeine Tipps für die Arbeit mit CSS-Frameworks](#135-allgemeine-tipps-für-die-arbeit-mit-css-frameworks)
+
+14. [Open-Source-Lösungen für Barrierefreiheitstests und -verbesserungen](#14-open-source-lösungen-für-barrierefreiheitstests-und--verbesserungen)
+    14.1 [Übersicht der Tools](#141-übersicht-der-tools)
+    14.2 [Detaillierte Beschreibungen und Tipps](#142-detaillierte-beschreibungen-und-tipps)
+    14.3 [Allgemeine Tipps zur Nutzung von Open-Source-Barrierefreiheitstools](#143-allgemeine-tipps-zur-nutzung-von-open-source-barrierefreiheitstools)
+
 ## 1. Struktur und Semantik
 
 ### 1.1 Grundlegende HTML-Struktur
