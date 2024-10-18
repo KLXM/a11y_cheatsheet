@@ -1,4 +1,4 @@
-# Erweitertes Hierarchisches Cheatsheet: Barrierefreies Webdesign
+# Cheatsheet: Barrierefreies Webdesign
 
 ## 1. Struktur und Semantik
 
